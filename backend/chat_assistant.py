@@ -3,7 +3,7 @@ from backend.db import get_chat_history, save_chat_message, get_profile
 
 def chat_with_assistant(user_message, user_id=1):
     """
-    Gets conversation history, user profile context, sends everything to Gemini 2.5 Flash,
+    Gets conversation history, user profile context, sends everything to Gemini 2.0 Flash,
     persists the messages, and returns the response.
     """
     if not user_message:

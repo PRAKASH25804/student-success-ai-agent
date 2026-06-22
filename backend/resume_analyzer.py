@@ -20,7 +20,7 @@ def extract_text_from_pdf(file_path):
 
 def analyze_resume(file_path, target_role="Software Developer", user_id=1):
     """
-    Extracts text from PDF, requests Gemini 2.5 Flash to analyze it,
+    Extracts text from PDF, requests Gemini 2.0 Flash to analyze it,
     saves the results to SQLite db, and returns the response.
     """
     filename = os.path.basename(file_path)
