@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Success AI Agent - Kaggle Capstone Project</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Favicon SVG -->
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+    
+    <!-- Splash Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content glass-panel">
+            <div class="loading-logo-box">
+                <img src="images/logo.svg" alt="SuccessAI Logo" class="logo-svg-anim" width="90" height="90">
+            </div>
+            <h2 class="loading-title">Success<span class="gradient-text">AI</span></h2>
+            <p class="loading-tagline">Transforming Students into Future Professionals</p>
+            <div class="loading-bar"><div class="loading-bar-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Background Glow Elements -->
+    <div class="bg-glow blob-purple"></div>
+    <div class="bg-glow blob-blue"></div>
+
+    <!-- ========================================== -->
+    <!--            LANDING PAGE HEADER            -->
+    <!-- ========================================== -->
+    <header id="landing-header" class="glass-nav">
+        <div class="nav-container">
+            <div class="logo-area" onclick="showSection('landing')">
+                <div class="logo-icon-img"><img src="images/logo.svg" alt="SuccessAI Logo" class="nav-logo" width="38" height="38"></div>
+                <span class="logo-text">Success<span class="gradient-text">AI</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#features" onclick="scrollToElement('features')">Features</a>
+                <a href="#benefits" onclick="scrollToElement('benefits')">Benefits</a>
+                <a href="#docs" onclick="showDocsModal()">Docs</a>
+            </nav>
+            <button class="btn btn-primary nav-btn" onclick="launchDashboard()">
+                <span>Launch App</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!--             LANDING PAGE SECTION           -->
+    <!-- ========================================== -->
+    <section id="landing-section" class="landing-page active">
+        <!-- Interactive Canvas Background -->
+        <canvas id="particle-canvas" class="particle-canvas"></canvas>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Startup Branding Logo area inside Hero -->
+                <div class="hero-brand-badge glass-panel animate-on-load">
+                    <img src="images/logo.svg" alt="SuccessAI Logo" class="hero-badge-logo" width="48" height="48">
+                    <div class="hero-badge-info">
+                        <span class="hero-badge-title">Success<span class="gradient-text">AI</span></span>
+                        <span class="hero-badge-tagline">Transforming Students into Future Professionals</span>
+                    </div>
+                </div>
+                <div class="badge-container mt-3">
+                    <span class="badge"><i data-lucide="sparkles"></i> Powered by Gemini 2.5 Flash</span>
+                </div>
+                <h1 class="hero-title mt-2">Elevate Your Academic & <br><span class="gradient-text animate-gradient">Career Success</span> with AI</h1>
+                <p class="hero-subtitle">Optimize resumes, resolve skill gaps, conduct mock interviews, chart your custom career roadmap, and structure your daily study routines through intelligent agents.</p>
+                <div class="hero-ctas">
+                    <button class="btn btn-large btn-primary" onclick="launchDashboard()">
+                        <span>Get Started for Free</span>
+                        <i data-lucide="zap"></i>
+                    </button>
+                    <button class="btn btn-large btn-secondary" onclick="scrollToElement('features')">
+                        <span>Explore Features</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="dashboard-mockup glass-panel">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="mockup-search">successai.agent/dashboard</div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-sidebar">
+                            <div class="mockup-item active"></div>
+                            <div class="mockup-item"></div>
+                            <div class="mockup-item"></div>
+                            <div class="mockup-item"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-row-big"></div>
+                            <div class="mockup-row-flex">
+                                <div class="mockup-col"></div>
+                                <div class="mockup-col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="landing-features">
+            <h2 class="section-title">Intelligent Modules For Future Leaders</h2>
+            <p class="section-subtitle">A production-ready suite of cognitive modules customized to address critical student pain points.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-panel" onclick="launchDashboard('resume')">
+                    <div class="card-icon purple-gradient"><i data-lucide="file-text"></i></div>
+                    <h3>Resume Analyzer</h3>
+                    <p>Audit resumes against target roles, identify missing keywords, evaluate ATS compatibility, and export optimization checklists.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="feature-card glass-panel" onclick="launchDashboard('skill-gap')">
+                    <div class="card-icon blue-gradient"><i data-lucide="trending-up"></i></div>
+                    <h3>Skill Gap Analyzer</h3>
+                    <p>Compare your current skillset with desired jobs. Generate custom learning roadmaps, certifications, and portfolio projects.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="feature-card glass-panel" onclick="launchDashboard('interview')">
+                    <div class="card-icon pink-gradient"><i data-lucide="video"></i></div>
+                    <h3>Interview Preparation</h3>
+                    <p>Practice simulated mock interviews. Scale questions by difficulty and study model answers tailored to your industry.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="feature-card glass-panel" onclick="launchDashboard('study')">
+                    <div class="card-icon green-gradient"><i data-lucide="calendar"></i></div>
+                    <h3>Study Planner</h3>
+                    <p>Prepare for exams with intelligent calendar task divisions, weekly goals, study limits, and spaced revision sessions.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="feature-card glass-panel" onclick="launchDashboard('roadmap')">
+                    <div class="card-icon orange-gradient"><i data-lucide="map"></i></div>
+                    <h3>Career Roadmap</h3>
+                    <p>Visualize your career path timeline, milestones, courses, and guidelines for applying to internships.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="feature-card glass-panel" onclick="launchDashboard('chat')">
+                    <div class="card-icon red-gradient"><i data-lucide="message-square"></i></div>
+                    <h3>AI Student Assistant</h3>
+                    <p>Ask academic questions, resolve technical blocks, request project feedback, or seek career mentorship dynamically.</p>
+                    <span class="card-link">Launch Module <i data-lucide="arrow-up-right"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section id="benefits" class="landing-benefits">
+            <h2 class="section-title">Why Choose SuccessAI?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="award"></i></div>
+                    <h4>Improve Employability</h4>
+                    <p>Align skills and resume structure directly with market requirements to land interviews faster.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
+                    <h4>Prepare for Interviews</h4>
+                    <p>Build confidence with robust behavioral, technical, and HR scenarios designed by recruiters.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="file-check-2"></i></div>
+                    <h4>Build Better Resumes</h4>
+                    <p>Pass strict ATS filters automatically with structured formatting and industry keywords.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="bar-chart-3"></i></div>
+                    <h4>Track Learning Progress</h4>
+                    <p>Organize academic obligations and record milestones using visual progression charts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="landing-footer">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-area">
+                        <div class="logo-icon-img"><img src="images/logo.svg" alt="SuccessAI Logo" class="nav-logo" width="38" height="38"></div>
+                        <span class="logo-text">Success<span class="gradient-text">AI</span></span>
+                    </div>
+                    <p class="footer-slogan mt-2" style="font-size: 0.95rem; font-weight: 500;">Transforming Students into Future Professionals</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h5>Documentation</h5>
+                        <a href="#" onclick="showDocsModal()">API Guide</a>
+                        <a href="#" onclick="showDocsModal()">Architecture</a>
+                    </div>
+                    <div class="link-group">
+                        <h5>Project Info</h5>
+                        <a href="https://github.com" target="_blank">GitHub Repository</a>
+                        <a href="https://kaggle.com" target="_blank">Kaggle Capstone</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <p class="footer-credits" style="text-align: left; line-height: 1.6; font-size: 0.85rem; color: var(--text-muted);">
+                    <strong>Powered by Gemini 2.5 Flash</strong><br>
+                    Built for the Google x Kaggle Vibecoding Agents Challenge 2026
+                </p>
+                <p class="footer-license" style="font-size: 0.82rem; color: var(--text-muted);">&copy; 2026 SuccessAI. MIT License.</p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- ========================================== -->
+    <!--            MAIN DASHBOARD FRAMEWORK        -->
+    <!-- ========================================== -->
+    <div id="dashboard-container" class="dashboard-layout">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header" onclick="showSection('landing')">
+                <div class="logo-icon-img"><img src="images/logo.svg" alt="SuccessAI Logo" class="nav-logo" width="38" height="38"></div>
+                <span class="logo-text">Success<span class="gradient-text">AI</span></span>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar" onclick="showTab('profile')">
+                    <span id="sidebar-user-initials">AS</span>
+                </div>
+                <div class="user-details">
+                    <h4 id="sidebar-user-name">Alex Student</h4>
+                    <p id="sidebar-user-role">AI Engineer</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" id="tab-home" class="nav-item active" onclick="showTab('home')">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" id="tab-resume" class="nav-item" onclick="showTab('resume')">
+                    <i data-lucide="file-text"></i>
+                    <span>Resume Analyzer</span>
+                </a>
+                <a href="#" id="tab-skill-gap" class="nav-item" onclick="showTab('skill-gap')">
+                    <i data-lucide="trending-up"></i>
+                    <span>Skill Gap Analyzer</span>
+                </a>
+                <a href="#" id="tab-interview" class="nav-item" onclick="showTab('interview')">
+                    <i data-lucide="video"></i>
+                    <span>Interview Prep</span>
+                </a>
+                <a href="#" id="tab-study" class="nav-item" onclick="showTab('study')">
+                    <i data-lucide="calendar"></i>
+                    <span>Study Planner</span>
+                </a>
+                <a href="#" id="tab-roadmap" class="nav-item" onclick="showTab('roadmap')">
+                    <i data-lucide="map"></i>
+                    <span>Career Roadmap</span>
+                </a>
+                <a href="#" id="tab-chat" class="nav-item" onclick="showTab('chat')">
+                    <i data-lucide="message-square"></i>
+                    <span>AI Assistant</span>
+                </a>
+                <a href="#" id="tab-analytics" class="nav-item" onclick="showTab('analytics')">
+                    <i data-lucide="bar-chart-2"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" id="tab-profile" class="nav-item" onclick="showTab('profile')">
+                    <i data-lucide="user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" id="tab-settings" class="nav-item" onclick="showTab('settings')">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-small w-100" style="margin-bottom: 10px;" onclick="exitDashboard()">
+                    <i data-lucide="log-out"></i>
+                    <span>Landing Page</span>
+                </button>
+                <div class="sidebar-credit" style="font-size: 0.72rem; text-align: left; color: var(--text-muted); line-height: 1.45; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px; margin-top: 10px;">
+                    <strong>SuccessAI</strong><br>
+                    Transforming Students into Professionals<br>
+                    <span style="opacity: 0.75;">Powered by Gemini 2.5 Flash</span><br>
+                    <span style="opacity: 0.75;">Built for Google x Kaggle 2026</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- TOP STATS HEADER -->
+            <header class="content-header">
+                <div class="header-title-area">
+                    <h1 id="page-title">Welcome, Alex</h1>
+                    <p id="page-subtitle">Here is your academic overview for today.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary icon-btn" onclick="refreshAllData()" title="Sync DB Stats">
+                        <i data-lucide="refresh-cw"></i>
+                    </button>
+                    <div class="profile-pill" onclick="showTab('profile')">
+                        <span id="header-user-name">Alex Student</span>
+                        <div class="pill-avatar"><i data-lucide="user"></i></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- VIEWPORT WINDOWS -->
+            <div class="viewport">
+                
+                <!-- 1. HOME DASHBOARD OVERVIEW -->
+                <div id="view-home" class="view-panel active">
+                    <!-- Quick Statistics Row -->
+                    <div class="stats-grid">
+                        <div class="stat-card glass-panel" onclick="showTab('resume')">
+                            <div class="stat-icon purple"><i data-lucide="file-text"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Resume Score</span>
+                                <h2 class="stat-value" id="home-stat-resume-score">85/100</h2>
+                                <span class="stat-trend success"><i data-lucide="arrow-up-right"></i> +15% increase</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-panel" onclick="showTab('skill-gap')">
+                            <div class="stat-icon blue"><i data-lucide="trending-up"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Job Match Rate</span>
+                                <h2 class="stat-value" id="home-stat-skill-match">78%</h2>
+                                <span class="stat-trend success"><i data-lucide="shield-check"></i> Profile synced</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-panel" onclick="showTab('study')">
+                            <div class="stat-icon green"><i data-lucide="calendar"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Study Planner</span>
+                                <h2 class="stat-value" id="home-stat-study-progress">65%</h2>
+                                <div class="mini-progress"><div class="bar green-bg" style="width: 65%" id="home-stat-study-bar"></div></div>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-panel" onclick="showTab('interview')">
+                            <div class="stat-icon pink"><i data-lucide="video"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Mock Practice Sessions</span>
+                                <h2 class="stat-value" id="home-stat-interview-count">4</h2>
+                                <span class="stat-trend info"><i data-lucide="award"></i> 12 Questions saved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Modules Navigation Grid -->
+                    <div class="dashboard-row flex-row">
+                        <!-- Left: Mini Charts -->
+                        <div class="row-card glass-panel flex-2">
+                            <div class="card-header">
+                                <h3>Analytics Summary</h3>
+                                <button class="btn btn-link btn-small" onclick="showTab('analytics')">View Detail <i data-lucide="arrow-right"></i></button>
+                            </div>
+                            <div class="chart-container-half">
+                                <canvas id="home-mini-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Right: Career Status Card -->
+                        <div class="row-card glass-panel flex-1">
+                            <div class="card-header">
+                                <h3>Active Career Target</h3>
+                            </div>
+                            <div class="target-profile-details">
+                                <div class="target-role-badge">
+                                    <i data-lucide="briefcase"></i>
+                                    <span id="home-target-role">AI Engineer</span>
+                                </div>
+                                <div class="skills-summary-list">
+                                    <h4>Your Skills:</h4>
+                                    <div class="tag-container" id="home-skills-tags">
+                                        <span class="tag">Python</span>
+                                        <span class="tag">Basic Math</span>
+                                        <span class="tag">Java</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary w-100" onclick="showTab('profile')">Edit Profile Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. RESUME ANALYZER MODULE -->
+                <div id="view-resume" class="view-panel">
+                    <div class="module-wrapper">
+                        <div class="control-panel glass-panel">
+                            <h3>Resume Evaluator & Optimizer</h3>
+                            <p class="panel-desc">Upload your resume in PDF format to receive instant scoring, missing skill comparisons, strengths, and ATS tips.</p>
+                            
+                            <form id="resume-upload-form" class="upload-form">
+                                <div class="form-group">
+                                    <label for="resume-target-role">Target Job Role</label>
+                                    <input type="text" id="resume-target-role" placeholder="e.g. Full Stack Developer" class="form-control" required>
+                                </div>
+                                
+                                <div class="upload-dropzone" id="resume-dropzone">
+                                    <i data-lucide="file-up" class="dropzone-icon"></i>
+                                    <span class="dropzone-text">Drag & drop your PDF resume here or click to select</span>
+                                    <input type="file" id="resume-file-input" accept=".pdf" style="display:none;" required>
+                                    <span class="file-name-indicator" id="resume-file-name">No file selected</span>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 mt-3" id="resume-submit-btn">
+                                    <i data-lucide="play"></i>
+                                    <span>Run Resume Audit</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="results-panel glass-panel" id="resume-results">
+                            <!-- Skeleton loader state -->
+                            <div class="skeleton-container" id="resume-skeleton">
+                                <div class="skeleton title-skeleton"></div>
+                                <div class="skeleton score-circle-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                            </div>
+                            
+                            <!-- Main Content State -->
+                            <div class="results-content hide" id="resume-results-content">
+                                <div class="results-header">
+                                    <div class="score-container">
+                                        <div class="circular-score-gauge" id="resume-score-gauge">
+                                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path class="circle" id="resume-score-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <div class="percentage-text" id="resume-score-text">0%</div>
+                                        </div>
+                                        <span class="score-title">Resume Strength Score</span>
+                                    </div>
+                                    <div class="export-actions">
+                                        <button class="btn btn-secondary btn-small" onclick="exportModule('resume', 'txt')"><i data-lucide="download"></i> Export TXT</button>
+                                        <button class="btn btn-secondary btn-small" onclick="window.print()"><i data-lucide="printer"></i> Print / PDF</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs-subcontainer">
+                                    <div class="sub-tabs">
+                                        <button class="sub-tab active" onclick="switchSubTab(this, 'resume-tab-skills')">Skills Overview</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'resume-tab-sw')">Strengths & Weaknesses</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'resume-tab-ats')">ATS Optimization</button>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content active" id="resume-tab-skills">
+                                        <div class="list-block">
+                                            <h4>Identified Skills:</h4>
+                                            <div class="tag-container" id="resume-skills-found"></div>
+                                        </div>
+                                        <div class="list-block mt-3">
+                                            <h4>Missing Skills for Target Job:</h4>
+                                            <div class="tag-container" id="resume-skills-missing"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="resume-tab-sw">
+                                        <div class="checklist-grid">
+                                            <div class="checklist-column">
+                                                <h4><i data-lucide="plus-circle" class="success-icon"></i> Strengths</h4>
+                                                <ul class="bullet-list" id="resume-strengths-list"></ul>
+                                            </div>
+                                            <div class="checklist-column">
+                                                <h4><i data-lucide="minus-circle" class="danger-icon"></i> Weaknesses</h4>
+                                                <ul class="bullet-list" id="resume-weaknesses-list"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="resume-tab-ats">
+                                        <div class="checklist-column">
+                                            <h4>Actionable Formatting Improvements</h4>
+                                            <ul class="bullet-list" id="resume-improvements-list"></ul>
+                                            
+                                            <h4 class="mt-3">ATS Matching Guidelines</h4>
+                                            <ul class="bullet-list" id="resume-ats-list"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empty-state" id="resume-empty">
+                                <i data-lucide="upload" class="empty-state-icon"></i>
+                                <h4>No Resume Analyzed</h4>
+                                <p>Upload your PDF resume on the left to see full performance metrics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. SKILL GAP ANALYZER MODULE -->
+                <div id="view-skill-gap" class="view-panel">
+                    <div class="module-wrapper">
+                        <div class="control-panel glass-panel">
+                            <h3>Skill Gap Analyzer</h3>
+                            <p class="panel-desc">Input your target role and current skills to find out where you lag behind in recruitment requirements.</p>
+                            
+                            <form id="skill-gap-form">
+                                <div class="form-group">
+                                    <label for="skill-job-role">Target Job Role</label>
+                                    <select id="skill-job-role" class="form-control">
+                                        <option value="AI Engineer">AI Engineer</option>
+                                        <option value="Software Engineer">Software Engineer</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="Web Developer">Web Developer</option>
+                                        <option value="DevOps Engineer">DevOps Engineer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="skill-current-list">Your Current Skills</label>
+                                    <textarea id="skill-current-list" rows="4" placeholder="e.g. Python, SQL, Git, HTML, Excel (comma separated)" class="form-control" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3" id="skill-submit-btn">
+                                    <i data-lucide="search"></i>
+                                    <span>Compare Skillset</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="results-panel glass-panel" id="skill-results">
+                            <div class="skeleton-container" id="skill-skeleton">
+                                <div class="skeleton title-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                            </div>
+                            
+                            <div class="results-content hide" id="skill-results-content">
+                                <div class="results-header">
+                                    <div class="match-rate-display">
+                                        <h3 id="skill-match-percent">Match: 0%</h3>
+                                        <div class="progress-bar-container"><div class="bar" id="skill-match-bar"></div></div>
+                                    </div>
+                                    <div class="export-actions">
+                                        <button class="btn btn-secondary btn-small" onclick="exportModule('skill-gap', 'txt')"><i data-lucide="download"></i> Export TXT</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs-subcontainer mt-3">
+                                    <div class="sub-tabs">
+                                        <button class="sub-tab active" onclick="switchSubTab(this, 'skill-tab-gaps')">Gaps & Certifications</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'skill-tab-roadmap')">Study Plan</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'skill-tab-projects')">Portfolio Projects</button>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content active" id="skill-tab-gaps">
+                                        <h4>Critically Missing Skills</h4>
+                                        <div class="tag-container mt-2" id="skill-missing-tags"></div>
+                                        
+                                        <h4 class="mt-4">Recommended Certifications</h4>
+                                        <ul class="bullet-list" id="skill-certs-list"></ul>
+                                        
+                                        <h4 class="mt-4">Recommended Learning Resources</h4>
+                                        <div class="resources-grid" id="skill-resources-grid"></div>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="skill-tab-roadmap">
+                                        <h4>Custom Skills Remediation Roadmap</h4>
+                                        <div class="timeline-visual" id="skill-roadmap-timeline"></div>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="skill-tab-projects">
+                                        <h4>Recommended Portfolio Projects</h4>
+                                        <div class="projects-container" id="skill-projects-list"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empty-state" id="skill-empty">
+                                <i data-lucide="trending-up" class="empty-state-icon"></i>
+                                <h4>No Skills Compare Run</h4>
+                                <p>Select your desired role on the left and run analysis to populate recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. INTERVIEW PREPARATION MODULE -->
+                <div id="view-interview" class="view-panel">
+                    <div class="module-wrapper">
+                        <div class="control-panel glass-panel">
+                            <h3>Interview Generator & Mock Coach</h3>
+                            <p class="panel-desc">Select target roles and question difficulty. Review standard recruiting questions, model answers, and evaluation criteria.</p>
+                            
+                            <form id="interview-form">
+                                <div class="form-group">
+                                    <label for="interview-job-role">Target Job Role</label>
+                                    <input type="text" id="interview-job-role" class="form-control" placeholder="e.g. AI Engineer" required>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="interview-difficulty">Difficulty Level</label>
+                                    <select id="interview-difficulty" class="form-control">
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate" selected>Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3" id="interview-submit-btn">
+                                    <i data-lucide="award"></i>
+                                    <span>Generate Mock Deck</span>
+                                </button>
+                            </form>
+                            
+                            <div class="mock-mode-control mt-4">
+                                <h4>Practice Sandbox</h4>
+                                <button class="btn btn-secondary w-100 mt-2" id="start-mock-btn" onclick="startMockInterview()" disabled>
+                                    <i data-lucide="user-check"></i>
+                                    <span>Start Practice Mode</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="results-panel glass-panel" id="interview-results">
+                            <div class="skeleton-container" id="interview-skeleton">
+                                <div class="skeleton title-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                            </div>
+                            
+                            <div class="results-content hide" id="interview-results-content">
+                                <div class="results-header">
+                                    <h3>Mock Interview Deck</h3>
+                                    <div class="export-actions">
+                                        <button class="btn btn-secondary btn-small" onclick="exportModule('interview', 'txt')"><i data-lucide="download"></i> Export TXT</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs-subcontainer mt-3">
+                                    <div class="sub-tabs">
+                                        <button class="sub-tab active" onclick="switchSubTab(this, 'interview-tab-tech')">Technical</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'interview-tab-behavioral')">Behavioral</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'interview-tab-hr')">HR & Fit</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'interview-tab-tips')">General Tips</button>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content active" id="interview-tab-tech">
+                                        <div class="accordion-group" id="interview-tech-accordion"></div>
+                                    </div>
+                                    <div class="sub-tab-content" id="interview-tab-behavioral">
+                                        <div class="accordion-group" id="interview-behavioral-accordion"></div>
+                                    </div>
+                                    <div class="sub-tab-content" id="interview-tab-hr">
+                                        <div class="accordion-group" id="interview-hr-accordion"></div>
+                                    </div>
+                                    <div class="sub-tab-content" id="interview-tab-tips">
+                                        <h4>Tailored Interview Tips</h4>
+                                        <ul class="bullet-list" id="interview-tips-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- INTERACTIVE MOCK INTERVIEW DECK MODAL VIEW -->
+                            <div class="mock-sandbox-viewport hide" id="mock-sandbox-viewport">
+                                <div class="mock-sandbox-header">
+                                    <h4>Interview Simulation Sandbox</h4>
+                                    <button class="btn btn-link btn-small" onclick="exitMockInterview()"><i data-lucide="x"></i> Exit Sandbox</button>
+                                </div>
+                                <div class="question-tracker">Question <span id="mock-current-idx">1</span> of <span id="mock-total-count">5</span></div>
+                                
+                                <div class="flashcard-wrapper">
+                                    <div class="flashcard glass-panel" id="interview-flashcard" onclick="flipFlashcard()">
+                                        <div class="card-side card-front">
+                                            <div class="card-category" id="mock-card-category">Technical</div>
+                                            <p class="question-text" id="mock-card-question">Click generate and start mock mode to load questions.</p>
+                                            <div class="card-hint"><i data-lucide="help-circle"></i> Click Card to Reveal Answer Outline</div>
+                                        </div>
+                                        <div class="card-side card-back">
+                                            <div class="card-category">Ideal Answer Framework</div>
+                                            <div class="answer-scroll" id="mock-card-answer">Answer template...</div>
+                                            <div class="card-tips mt-2" id="mock-card-tips">Tip...</div>
+                                            <div class="card-hint"><i data-lucide="refresh-cw"></i> Click Card to Return to Question</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flashcard-actions">
+                                    <button class="btn btn-secondary" onclick="prevMockQuestion()"><i data-lucide="arrow-left"></i> Previous</button>
+                                    <button class="btn btn-primary" onclick="nextMockQuestion()">Next <i data-lucide="arrow-right"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="empty-state" id="interview-empty">
+                                <i data-lucide="video" class="empty-state-icon"></i>
+                                <h4>No Interview Deck Selected</h4>
+                                <p>Provide target role on the left and generate a list of recruiter questions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. STUDY PLANNER MODULE -->
+                <div id="view-study" class="view-panel">
+                    <div class="module-wrapper">
+                        <div class="control-panel glass-panel">
+                            <h3>Spaced Exam Study Scheduler</h3>
+                            <p class="panel-desc">Define exam subjects, target exam date, and available study capacity. Receive structured daily milestones.</p>
+                            
+                            <form id="study-form">
+                                <div class="form-group">
+                                    <label for="study-subjects">Exam Subjects</label>
+                                    <input type="text" id="study-subjects" class="form-control" placeholder="e.g. Calculus, Machine Learning, DBMS" required>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="study-exam-date">Exam Date</label>
+                                    <input type="date" id="study-exam-date" class="form-control" required>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="study-hours">Daily Available Study Hours</label>
+                                    <select id="study-hours" class="form-control">
+                                        <option value="1">1 Hour</option>
+                                        <option value="2" selected>2 Hours</option>
+                                        <option value="4">4 Hours</option>
+                                        <option value="6">6 Hours</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3" id="study-submit-btn">
+                                    <i data-lucide="calendar"></i>
+                                    <span>Calculate Study Routine</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="results-panel glass-panel" id="study-results">
+                            <div class="skeleton-container" id="study-skeleton">
+                                <div class="skeleton title-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                            </div>
+                            
+                            <div class="results-content hide" id="study-results-content">
+                                <div class="results-header">
+                                    <h3>Weekly Revision Calendar</h3>
+                                    <div class="export-actions">
+                                        <button class="btn btn-secondary btn-small" onclick="exportModule('study', 'txt')"><i data-lucide="download"></i> Export TXT</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="planner-tracker-row mt-3">
+                                    <div class="completion-box glass-panel">
+                                        <span class="box-label">Goal Completion Rate</span>
+                                        <div class="box-metrics">
+                                            <h2 id="study-percent-text">0%</h2>
+                                            <div class="progress-bar-container"><div class="bar green-bg" id="study-percent-bar"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="goal-milestones-box glass-panel">
+                                        <h4>Weekly Milestones</h4>
+                                        <ul class="bullet-list-small" id="study-weekly-goals"></ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="calendar-list-view mt-4">
+                                    <h4>Day-by-Day Focus Areas (Check Completed Tasks)</h4>
+                                    <div class="calendar-cards" id="study-calendar-cards"></div>
+                                </div>
+                                
+                                <div class="revision-block glass-panel mt-4">
+                                    <h4>Final Days Revision Blueprint</h4>
+                                    <ul class="bullet-list" id="study-revision-list"></ul>
+                                </div>
+                            </div>
+                            
+                            <div class="empty-state" id="study-empty">
+                                <i data-lucide="calendar" class="empty-state-icon"></i>
+                                <h4>No Active Study Schedule</h4>
+                                <p>Submit exam parameters on the left to map study milestones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. CAREER ROADMAP MODULE -->
+                <div id="view-roadmap" class="view-panel">
+                    <div class="module-wrapper">
+                        <div class="control-panel glass-panel">
+                            <h3>Milestone Roadmap Planner</h3>
+                            <p class="panel-desc">Chart sequential technologies, targeted open-source projects, training certs, and steps for landing internships.</p>
+                            
+                            <form id="roadmap-form">
+                                <div class="form-group">
+                                    <label for="roadmap-career-goal">Target Career Goal</label>
+                                    <select id="roadmap-career-goal" class="form-control">
+                                        <option value="AI Engineer">AI Engineer</option>
+                                        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="Full Stack Developer">Full Stack Developer</option>
+                                        <option value="Cloud Engineer">Cloud Engineer</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3" id="roadmap-submit-btn">
+                                    <i data-lucide="map"></i>
+                                    <span>Visualize Career Steps</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div class="results-panel glass-panel" id="roadmap-results">
+                            <div class="skeleton-container" id="roadmap-skeleton">
+                                <div class="skeleton title-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                                <div class="skeleton row-skeleton"></div>
+                            </div>
+                            
+                            <div class="results-content hide" id="roadmap-results-content">
+                                <div class="results-header">
+                                    <h3>Learning Path Milestones</h3>
+                                    <div class="export-actions">
+                                        <button class="btn btn-secondary btn-small" onclick="exportModule('roadmap', 'txt')"><i data-lucide="download"></i> Export TXT</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs-subcontainer mt-3">
+                                    <div class="sub-tabs">
+                                        <button class="sub-tab active" onclick="switchSubTab(this, 'roadmap-tab-visual')">Visual Timeline</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'roadmap-tab-materials')">Courses & Certifications</button>
+                                        <button class="sub-tab" onclick="switchSubTab(this, 'roadmap-tab-internship')">Internship Guide</button>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content active" id="roadmap-tab-visual">
+                                        <div class="timeline-tree" id="roadmap-timeline-tree"></div>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="roadmap-tab-materials">
+                                        <h4>Target Online Paths & Courses</h4>
+                                        <ul class="bullet-list" id="roadmap-courses-list"></ul>
+                                        
+                                        <h4 class="mt-4">Accredited Credentials to Earn</h4>
+                                        <ul class="bullet-list" id="roadmap-certs-list"></ul>
+                                    </div>
+                                    
+                                    <div class="sub-tab-content" id="roadmap-tab-internship">
+                                        <h4>Applying & Landing Internships</h4>
+                                        <ul class="bullet-list" id="roadmap-internship-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empty-state" id="roadmap-empty">
+                                <i data-lucide="map" class="empty-state-icon"></i>
+                                <h4>No Roadmap Generated</h4>
+                                <p>Select career goals on the left to map milestones and technology milestones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. CHAT ASSISTANT MODULE -->
+                <div id="view-chat" class="view-panel">
+                    <div class="chat-container glass-panel">
+                        <div class="chat-header">
+                            <div class="chat-advisor-info">
+                                <div class="advisor-avatar"><i data-lucide="sparkles"></i></div>
+                                <div class="advisor-details">
+                                    <h3>SuccessAI Counselor</h3>
+                                    <p>Interactive Academic & Career Advisor</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary icon-btn" onclick="clearChat()" title="Reset Session Memory">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chat-body" id="chat-messages-body">
+                            <div class="message assistant-msg">
+                                <div class="msg-bubble">
+                                    Hello! I'm SuccessAI, your personalized student success coach. Ask me questions about writing resumes, technical project ideas, preparing for interviews, or planning study routines. How can I assist you today?
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-presets">
+                            <button class="preset-pill" onclick="sendPresetChat('Explain certifications for cloud architectures')">Cloud Certs</button>
+                            <button class="preset-pill" onclick="sendPresetChat('Suggest 3 intermediate projects for AI Engineers')">AI Project Ideas</button>
+                            <button class="preset-pill" onclick="sendPresetChat('What are the standard keywords for Software resumes?')">Resume Keywords</button>
+                            <button class="preset-pill" onclick="sendPresetChat('How can I prepare for a behavioral interview using STAR?')">STAR Method Prep</button>
+                        </div>
+                        
+                        <form id="chat-input-form" class="chat-input-area">
+                            <input type="text" id="chat-user-message" placeholder="Ask a question about assignments, resumes, interviews..." class="chat-input-control" required autocomplete="off">
+                            <button type="submit" class="btn btn-primary chat-send-btn" id="chat-send-btn">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 8. ANALYTICS VIEW -->
+                <div id="view-analytics" class="view-panel">
+                    <div class="dashboard-row flex-row">
+                        <!-- Top left: Resume History Chart -->
+                        <div class="row-card glass-panel flex-1">
+                            <div class="card-header">
+                                <h3>Resume Score Trend</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chart-resume-history"></canvas>
+                            </div>
+                        </div>
+                        <!-- Top right: Job Match Trend -->
+                        <div class="row-card glass-panel flex-1">
+                            <div class="card-header">
+                                <h3>Skill Gap Alignment</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chart-skill-alignment"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-row flex-row mt-4">
+                        <!-- Bottom left: Study tracker progress -->
+                        <div class="row-card glass-panel flex-1">
+                            <div class="card-header">
+                                <h3>Active Study Completion Progress</h3>
+                            </div>
+                            <div class="progress-detailed-metrics">
+                                <div class="completion-ring-box">
+                                    <div class="ring-percentage" id="analytics-ring-percentage">0%</div>
+                                    <span class="ring-desc">Average Goal Marks Checked</span>
+                                </div>
+                                <div class="completion-desc-box">
+                                    <p>Your current active exam revision planner completion status. Continuously update your checkbox goals inside the Study Planner view to watch this metric climb.</p>
+                                    <button class="btn btn-secondary btn-small mt-3" onclick="showTab('study')">Open Study Planner</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bottom right: General metrics count -->
+                        <div class="row-card glass-panel flex-1">
+                            <div class="card-header">
+                                <h3>Activity Records</h3>
+                            </div>
+                            <div class="activity-meters mt-3">
+                                <div class="activity-row">
+                                    <span class="act-name">Mock Interview Decks Practiced</span>
+                                    <h4 class="act-value" id="analytics-count-interviews">0</h4>
+                                </div>
+                                <div class="activity-row mt-3">
+                                    <span class="act-name">Active Roadmap Steps Tracked</span>
+                                    <h4 class="act-value" id="analytics-count-roadmaps">0</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. PROFILE MANAGEMENT VIEW -->
+                <div id="view-profile" class="view-panel">
+                    <div class="profile-settings-wrapper glass-panel">
+                        <h3>Edit Student Profile Details</h3>
+                        <p class="panel-desc">Keeping your profile current updates defaults inside all analyzer modules and provides relevant contexts to your SuccessAI chat counselor.</p>
+                        
+                        <form id="profile-edit-form" class="mt-4">
+                            <div class="form-row">
+                                <div class="form-group flex-1">
+                                    <label for="profile-name">Student Full Name</label>
+                                    <input type="text" id="profile-name" class="form-control" value="Alex Student" required>
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label for="profile-email">Academic Email Address</label>
+                                    <input type="email" id="profile-email" class="form-control" value="alex@university.edu" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <label for="profile-goal">Target Career Goal / Job Role</label>
+                                <input type="text" id="profile-goal" class="form-control" value="AI Engineer" required>
+                            </div>
+                            
+                            <div class="form-group mt-3">
+                                <label for="profile-skills">Your Current Skills (Comma Separated)</label>
+                                <textarea id="profile-skills" rows="4" class="form-control" required>Python, Basic Math, Java</textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-4" id="profile-save-btn">
+                                <i data-lucide="save"></i>
+                                <span>Save Changes & Sync</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 10. SETTINGS VIEW -->
+                <div id="view-settings" class="view-panel">
+                    <div class="profile-settings-wrapper glass-panel">
+                        <h3>General Application Settings</h3>
+                        <p class="panel-desc">Configure dashboard options, user settings, or purge stored application metrics.</p>
+                        
+                        <div class="settings-list mt-4">
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Design Style: Dark Mode</h4>
+                                    <p>Toggles dark mode styling gradients across the dashboard.</p>
+                                </div>
+                                <div class="setting-action">
+                                    <label class="switch">
+                                        <input type="checkbox" id="setting-darkmode" checked disabled>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-row mt-4">
+                                <div class="setting-info">
+                                    <h4>Secure Local Session Storage</h4>
+                                    <p>Retain parameters in browser storage to populate inputs automatically.</p>
+                                </div>
+                                <div class="setting-action">
+                                    <label class="switch">
+                                        <input type="checkbox" id="setting-localstore" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-row mt-4">
+                                <div class="setting-info">
+                                    <h4>AI Persona Profile</h4>
+                                    <p>Determine SuccessAI counselor reply formatting and tone criteria.</p>
+                                </div>
+                                <div class="setting-action">
+                                    <select class="form-control-inline" id="setting-persona">
+                                        <option value="coach" selected>Friendly Coach</option>
+                                        <option value="counselor">Strict Counselor</option>
+                                        <option value="peer">Study Peer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <hr class="settings-hr mt-4">
+                            
+                            <div class="setting-danger-zone mt-4">
+                                <h4 class="text-danger">Danger Zone</h4>
+                                <p class="panel-desc">Irreversible options. Clean up chat logs or delete all profiles stored locally.</p>
+                                
+                                <div class="danger-actions mt-3">
+                                    <button class="btn btn-secondary" onclick="clearAllAppMetrics()"><i data-lucide="trash-2"></i> Reset Application Database</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!--            DOCUMENTATION MODAL             -->
+    <!-- ========================================== -->
+    <div class="modal-overlay hide" id="docs-modal">
+        <div class="docs-modal glass-panel">
+            <div class="modal-header">
+                <h3>Documentation & Platform Architecture</h3>
+                <button class="btn btn-secondary icon-btn" onclick="hideDocsModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body scrollable-y">
+                <h4>System Architecture Overview</h4>
+                <p>The Student Success AI Agent is structured as a Python Flask REST API backend connected to a SQLite database, delivering results to a responsive vanilla JavaScript Single Page Application.</p>
+                
+                <div class="architecture-visual mt-3">
+                    <pre>
+[Frontend Vanilla HTML5/CSS/JS]
+       │             ▲
+       ▼             │  REST APIs (JSON)
+[Flask Python Web Controller app.py]
+  ├── db.py ──────────────► [SQLite Database (database.db)]
+  ├── resume_analyzer.py ─► [Extract Resume text via PyPDF] ──┐
+  ├── skill_gap.py ───────┐                                   │
+  ├── interview_generator ├──► [Central Gemini API Client] ───┼─► [Gemini 2.5 Flash API]
+  ├── study_planner.py ───┤                                   │
+  └── roadmap_generator.py┘                                   ┘
+                    </pre>
+                </div>
+                
+                <h4 class="mt-4">Installation Instructions</h4>
+                <ol>
+                    <li>Create Python virtual environment: <code>python -m venv venv</code></li>
+                    <li>Activate environment: <code>venv\Scripts\activate</code> (Windows)</li>
+                    <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
+                    <li>Create <code>.env</code> file in root and add: <code>GEMINI_API_KEY=your_key</code></li>
+                    <li>Run application: <code>python backend/app.py</code></li>
+                    <li>Open <code>http://localhost:5000</code> in your browser.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>

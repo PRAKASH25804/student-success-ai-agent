@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <filter id="logo-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer glass background circle -->
+  <circle cx="50" cy="50" r="46" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+  
+  <!-- AI brain hemisphere node net background -->
+  <path d="M 30,55 L 40,45 M 40,45 L 50,55 M 50,55 L 60,45 M 60,45 L 70,55 M 35,65 L 45,55 L 55,65 L 65,55" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-dasharray="2,2" />
+  <circle cx="30" cy="55" r="2.5" fill="#3b82f6" />
+  <circle cx="40" cy="45" r="2" fill="#8b5cf6" />
+  <circle cx="50" cy="55" r="2.5" fill="#ec4899" />
+  <circle cx="60" cy="45" r="2" fill="#3b82f6" />
+  <circle cx="70" cy="55" r="2.5" fill="#8b5cf6" />
+  <circle cx="45" cy="55" r="2" fill="#ec4899" />
+  <circle cx="55" cy="65" r="2" fill="#3b82f6" />
+
+  <!-- Upward growth arrow representing career progress -->
+  <path d="M 50,78 L 50,32 M 50,32 L 42,40 M 50,32 L 58,40" stroke="url(#logo-grad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#logo-glow)" />
+
+  <!-- Stylized brain hemispheres -->
+  <!-- Left hemisphere -->
+  <path d="M 46,38 C 34,36 28,46 34,54 C 28,58 30,70 42,68 C 44,68 46,64 46,60" fill="none" stroke="url(#logo-grad)" stroke-width="3" stroke-linecap="round" />
+  <!-- Right hemisphere -->
+  <path d="M 54,38 C 66,36 72,46 66,54 C 72,58 70,70 58,68 C 56,68 54,64 54,60" fill="none" stroke="url(#logo-grad)" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Graduation cap representing academic success -->
+  <path d="M 50,16 L 76,26 L 50,36 L 24,26 Z" fill="url(#logo-grad)" opacity="0.95" />
+  <!-- Cap tassel -->
+  <path d="M 76,26 L 78,40 L 75,44" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="73" y="44" width="4" height="6" fill="#ec4899" rx="1" />
+  <path d="M 36,29 L 36,36 C 36,44 64,44 64,36 L 64,29" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" />
+</svg>
