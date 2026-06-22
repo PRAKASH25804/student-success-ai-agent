@@ -194,6 +194,23 @@ To run on Vercel:
 3. Run `vercel` in the project root folder to deploy directly. Add your `GEMINI_API_KEY` to Vercel's project dashboard env settings.
 
 ---
+## 🎥 Demo Video
+
+Watch the complete project demonstration here:
+
+https://youtu.be/0r9mUdaWQog
+
+The demo showcases:
+
+* ATS Resume Analyzer
+* Skill Gap Analyzer
+* Interview Preparation Simulator
+* Academic Study Planner
+* Career Roadmap Generator
+* AI Student Counselor Chat
+* Analytics Dashboard
+* Gemini 2.5 Flash Integration
+
 
 ## 📄 License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
