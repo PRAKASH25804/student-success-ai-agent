@@ -20,7 +20,7 @@ else:
 
 def generate_json_response(prompt, system_instruction=None):
     """
-    Calls Gemini 2.0 Flash and requests a JSON response.
+    Calls Gemini 2.5 Flash and requests a JSON response.
     Has fallback to standard requests HTTP API if SDK fails.
     """
     if not GEMINI_API_KEY:
@@ -28,7 +28,7 @@ def generate_json_response(prompt, system_instruction=None):
     
     # Method 1: Using google-generativeai library
     try:
-        model_name = 'gemini-2.0-flash'
+        model_name = 'gemini-2.5-flash'
         config = {
             "response_mime_type": "application/json"
         }
@@ -56,7 +56,7 @@ def generate_json_response(prompt, system_instruction=None):
         
         # Method 2: HTTP Fallback using requests
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
             headers = {"Content-Type": "application/json"}
             
             if system_instruction:
@@ -94,14 +94,14 @@ def generate_json_response(prompt, system_instruction=None):
 
 def generate_text_response(prompt, system_instruction=None, history=None):
     """
-    Calls Gemini 2.0 Flash for chat text generation (markdown supported).
+    Calls Gemini 2.5 Flash for chat text generation (markdown supported).
     Allows history input.
     """
     if not GEMINI_API_KEY:
         raise ValueError("GEMINI_API_KEY is not set.")
         
     try:
-        model_name = 'gemini-2.0-flash'
+        model_name = 'gemini-2.5-flash'
         
         if system_instruction:
             model = genai.GenerativeModel(
@@ -130,7 +130,7 @@ def generate_text_response(prompt, system_instruction=None, history=None):
     except Exception as e:
         logger.error(f"SDK Text generation failed: {str(e)}. Attempting HTTP fallback...")
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
             headers = {"Content-Type": "application/json"}
             
             formatted_contents = []

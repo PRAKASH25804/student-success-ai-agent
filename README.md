@@ -2,12 +2,12 @@
 
 > Transforming Students into Future Professionals
 
-[![Google Gemini 2.0 Flash](https://img.shields.io/badge/AI-Gemini%202.0%20Flash-blueviolet?style=flat-square&logo=google)](https://deepmind.google/technologies/gemini/)
+[![Google Gemini 2.5 Flash](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-blueviolet?style=flat-square&logo=google)](https://deepmind.google/technologies/gemini/)
 [![Framework](https://img.shields.io/badge/Backend-Python%20Flask-lightgrey?style=flat-square&logo=flask)](https://flask.palletsprojects.com/)
 [![Database](https://img.shields.io/badge/Database-SQLite-blue?style=flat-square&logo=sqlite)](https://sqlite.org/)
 [![UI Theme](https://img.shields.io/badge/UI-Glassmorphism%20Dark-purple?style=flat-square)](https://github.com)
 
-A production-ready academic counselor and career readiness platform designed for the **Google Kaggle Vibecoding Agents Capstone Project**. Built using a Python Flask REST API backend, SQLite persistence database, and a vanilla HTML5/CSS3/ES6 Single Page Application (SPA) frontend, the platform integrates Google Gemini 2.0 Flash to empower students in optimizing resumes, analyzing skill gaps, preparing for technical interviews, and generating structured study plans.
+A production-ready academic counselor and career readiness platform designed for the **Google Kaggle Vibecoding Agents Capstone Project**. Built using a Python Flask REST API backend, SQLite persistence database, and a vanilla HTML5/CSS3/ES6 Single Page Application (SPA) frontend, the platform integrates Google Gemini 2.5 Flash to empower students in optimizing resumes, analyzing skill gaps, preparing for technical interviews, and generating structured study plans.
 
 ---
 
@@ -76,7 +76,7 @@ SuccessAI focuses on establishing a professional, trustworthy, and student-focus
       │                           ▲                           │
       ▼                           │ uploads/                  ▼
 ┌───────────┐                     │                     ┌───────────┐
-│ database.db│ (SQLite)          [Resume.pdf]           │Gemini API │ (2.0 Flash)
+│ database.db│ (SQLite)          [Resume.pdf]           │Gemini API │ (2.5 Flash)
 └───────────┘                                           └───────────┘
 ```
 
